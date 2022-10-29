@@ -17,6 +17,14 @@ class Deck:
         self.bottom_card: Optional[Card] = None
         self.deck_size = 0
 
+    def add_card_on_top(self, card: Card) -> None:
+        if self.is_empty():
+            self.top_card = card
+            self.assign_new_bottom_card(card)
+        else:
+            card.next_card = self.top_card
+            self.top_card = card
+
     def assign_new_bottom_card(self, card: Card) -> None:
         if self.bottom_card:
             self.bottom_card.next_card = card
@@ -25,14 +33,20 @@ class Deck:
 
     def take_top_card(self) -> Card:
         top = self.top_card
-        self.top_card = top.next_card if top.next_card else None
+        if top.next_card:
+            self.top_card = top.next_card
+        else:
+            self.top_card = None
         return top
 
     def move_top_card_to_bottom(self) -> None:
-        self.assign_new_bottom_card(self.take_top_card())
+        top_card = self.take_top_card()
+        if not self.top_card:
+            self.top_card = top_card
+        self.assign_new_bottom_card(top_card)
 
     def is_sorted(self) -> bool:
-        if self.top_card != 0:
+        if self.top_card.value != 1:
             return False
         current_card = self.top_card
         while current_card.next_card:
@@ -43,12 +57,14 @@ class Deck:
 
     def is_empty(self) -> bool:
         if self.top_card:
-            return True
-        else:
             return False
+        else:
+            return True
 
     def print_deck_cards(self):
         current_card = self.top_card
+        deck_list = []
         while current_card:
-            print(current_card.value)
+            deck_list.append(current_card.value)
             current_card = current_card.next_card
+        print(deck_list)
