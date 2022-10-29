@@ -1,6 +1,14 @@
 from cards import Card, Deck
 
 
+def initialize_deck() -> Deck:
+    deck = Deck()
+    initial_card = Card(1)
+    deck.top_card = initial_card
+    deck.bottom_card = initial_card
+    return deck
+
+
 class Solver:
     def __init__(self, deck_size: int, verbose: bool = False):
         self.deck_size = deck_size
@@ -28,16 +36,9 @@ class Solver:
             table_deck.print_deck_cards()
 
     def create_hand_deck(self) -> None:
-        self.hand_deck = self.initialize_deck()
+        self.hand_deck = initialize_deck()
         if self.deck_size > 1:
             for i in range(2, self.deck_size + 1):
                 new_card = Card(i)
                 self.hand_deck.assign_new_bottom_card(new_card)
-
-    def initialize_deck(self) -> Deck:
-        deck = Deck()
-        initial_card = Card(1)
-        deck.top_card = initial_card
-        deck.bottom_card = initial_card
-        return deck
 

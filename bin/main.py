@@ -1,6 +1,8 @@
 import argparse
 import logging
 
+from solver import Solver
+
 
 def parse_input() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
@@ -10,32 +12,33 @@ def parse_input() -> argparse.Namespace:
     subparsers = parser.add_subparsers()
 
     parser_solve_problem = subparsers.add_parser('solve',
-                                                 type=int,
                                                  help='Size of the deck that will be used to solve the problem')
-    # parser_solve_problem.add_argument('-s', '--size',
-    #                                   type=int,
-    #                                   required=True,
-    #                                   help='Size of the deck that will be used to solve the problem')
+    parser_solve_problem.add_argument('-s', '--size',
+                                      type=int,
+                                      required=True,
+                                      help='Size of the deck that will be used to solve the problem')
     parser_solve_problem.add_argument('-v', '--verbose',
                                       action='store_true',
                                       help='Adds verbosity to the solution output')
-
-    parser_test_cases = subparsers.add_parser('test-cases')
-    parser_test_cases.add_argument('-v', '--verbose',
-                                   action='store_true',
-                                   help='Adds verbosity to the solution output')
+    parser_solve_problem.set_defaults(func=solve)
 
     parser_unit_tests = subparsers.add_parser('unit-tests')
-    parser_unit_tests.add_argument('-v', '--verbose', action='store_true')
+    parser_unit_tests.set_defaults(func=unit_tests)
 
     namespace = parser.parse_args()
     return namespace
 
 
 def solve(args):
-    if args.size <= 0:
-        logging.exception('Please provide a size bigger than 0.')
-        raise ValueError
+    return Solver(args.size, args.verbose).solve()
+
+
+def test_cases():
+    return 2
+
+
+def unit_tests():
+    return 1
 
 
 def main():

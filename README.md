@@ -22,31 +22,3 @@ Please ensure the program compiles and runs correctly (no pseudo-code). You can 
 
 Once the program for the above has been written please write a program that runs unit test cases to validate the program. Please write unit tests for all the various test case scenarios for this.
 Please provide clear instructions on how to run program and unit tests.
-
-
-Example:
-
-
-Cards   Rounds
-   2        2
-   3        3
-   4        2
-   5        5
-   6        6
-   7        5
-   8        4
-   9        6
-  10        6
-  11       15
-  12       12
-  13       12
-  14       30
-  15       15
-  16        4
-  20       20
-  30       12
-  31      210
-  32       12
-  50       50
-  51       42
-  52      510
