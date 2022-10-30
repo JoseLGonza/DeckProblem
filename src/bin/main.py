@@ -2,8 +2,9 @@ import argparse
 import logging
 import unittest
 
-from solver import Solver
-from tests import test_solver, test_cards
+from src.solver import Solver
+from src.tests import test_solver
+from src.tests import test_cards
 
 
 def parse_input() -> argparse.Namespace:

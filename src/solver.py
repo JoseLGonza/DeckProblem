@@ -1,4 +1,4 @@
-from cards import Card, Deck
+from src.cards import Card, Deck
 
 
 def initialize_deck() -> Deck:
@@ -57,8 +57,8 @@ class Solver:
             table_deck.add_card_on_top(self.hand_deck.take_top_card())
             if self.hand_deck.top_card:
                 self.hand_deck.move_top_card_to_bottom()
-        if self.verbose:
-            print_decks(self.hand_deck, table_deck)
+            if self.verbose:
+                print_decks(self.hand_deck, table_deck)
         self.hand_deck = table_deck
         self.rounds += 1
 
