@@ -1,8 +1,9 @@
 import argparse
 import logging
-import subprocess
+import unittest
 
 from solver import Solver
+from tests import test_solver, test_cards
 
 
 def parse_input() -> argparse.Namespace:
@@ -23,6 +24,9 @@ def parse_input() -> argparse.Namespace:
                                       help='Adds verbosity to the solution output')
     parser_solve_problem.set_defaults(func=solve)
 
+    parser_unit_tests = subparsers.add_parser('test-cases')
+    parser_unit_tests.set_defaults(func=test_cases)
+
     parser_unit_tests = subparsers.add_parser('unit-tests')
     parser_unit_tests.set_defaults(func=unit_tests)
 
@@ -31,12 +35,26 @@ def parse_input() -> argparse.Namespace:
 
 
 def solve(args):
-    return Solver(args.size, args.verbose).solve()
+    print(Solver(args.size, args.verbose).solve())
 
 
 def unit_tests(args):
-    subprocess.call('python ../tests/test_cards.py')
-    subprocess.call('python ../tests/test_solver.py')
+    text_runner = unittest.TextTestRunner(verbosity=2)
+    suite_cards = unittest.TestLoader().loadTestsFromModule(test_cards)
+    suite_solver = unittest.TestLoader().loadTestsFromModule(test_solver)
+    text_runner.run(suite_cards)
+    text_runner.run(suite_solver)
+
+
+def test_cases(args):
+    test_cases_list = [2, 4, 5, 10, 12, 16, 30, 52, 80, 102, 104]
+    for test_case in test_cases_list:
+        print_test_case(test_case)
+
+
+def print_test_case(test_case: int):
+    print(f'\nTesting Deck Problem with the following Deck Size: {test_case}')
+    print(f'result {Solver(test_case).solve()}')
 
 
 def main():
@@ -49,4 +67,4 @@ def main():
 
 if __name__ == '__main__':
     logging.info('Running Main')
-    print(main())
+    main()

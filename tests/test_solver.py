@@ -37,5 +37,5 @@ class TestSolver(unittest.TestCase):
         self.assertEqual(Solver(156).solve(), 5040)
 
 
-if __name__ == '__main__':
+def run():
     unittest.main(verbosity=2)
