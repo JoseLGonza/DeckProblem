@@ -1,9 +1,7 @@
 import argparse
 import logging
 import subprocess
-import unittest
 
-from tests import test_cards, test_solver
 from solver import Solver
 
 
