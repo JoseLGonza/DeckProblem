@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, List
 
 
 class Card:
@@ -18,7 +18,6 @@ class Deck:
     def __init__(self):
         self.top_card: Optional[Card] = None
         self.bottom_card: Optional[Card] = None
-        self.deck_size = 0
 
     def add_card_on_top(self, card: Card) -> None:
         """
@@ -87,7 +86,7 @@ class Deck:
         else:
             return True
 
-    def print_deck_cards(self) -> None:
+    def get_deck_cards(self) -> List:
         """
         Prints the deck card as a List.
         """
@@ -96,4 +95,4 @@ class Deck:
         while current_card:
             deck_list.append(current_card.value)
             current_card = current_card.next_card
-        print(deck_list)
+        return deck_list

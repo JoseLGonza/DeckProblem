@@ -13,8 +13,20 @@ def initialize_deck() -> Deck:
     return deck
 
 
+def print_decks(hand_deck: Deck, table_deck: Deck) -> None:
+    """
+    Prints a given hand deck and a given table deck into console
+    :param hand_deck: Hand deck to print
+    :param table_deck: Table deck to print
+    """
+    print(f'Hand Deck: {hand_deck.get_deck_cards()} \n')
+    print(f'Table Deck: {table_deck.get_deck_cards()} \n')
+
+
 class Solver:
     def __init__(self, deck_size: int, verbose: bool = False):
+        if deck_size <= 1:
+            raise ValueError('Size must be of a value over 2')
         self.deck_size = deck_size
         self.verbose = verbose
         self.rounds = 0
@@ -32,7 +44,7 @@ class Solver:
             self.deck_round()
         return self.rounds
 
-    def deck_round(self):
+    def deck_round(self) -> None:
         """
         One deck round. As described in the problem, one deck round consists on:
         1. moving first card on hand to table deck
@@ -45,18 +57,16 @@ class Solver:
             table_deck.add_card_on_top(self.hand_deck.take_top_card())
             if self.hand_deck.top_card:
                 self.hand_deck.move_top_card_to_bottom()
+        if self.verbose:
+            print_decks(self.hand_deck, table_deck)
         self.hand_deck = table_deck
         self.rounds += 1
-        if self.verbose:
-            table_deck.print_deck_cards()
 
     def create_hand_deck(self) -> None:
         """
         Creates a hand deck by initializing a deck and adding number of carts given by the user.
         """
         self.hand_deck = initialize_deck()
-        if self.deck_size > 1:
-            for i in range(2, self.deck_size + 1):
-                new_card = Card(i)
-                self.hand_deck.assign_new_bottom_card(new_card)
-
+        for i in range(2, self.deck_size + 1):
+            new_card = Card(i)
+            self.hand_deck.assign_new_bottom_card(new_card)

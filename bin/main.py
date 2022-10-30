@@ -1,6 +1,9 @@
 import argparse
 import logging
+import subprocess
+import unittest
 
+from tests import test_cards, test_solver
 from solver import Solver
 
 
@@ -33,12 +36,9 @@ def solve(args):
     return Solver(args.size, args.verbose).solve()
 
 
-def test_cases():
-    return 2
-
-
-def unit_tests():
-    return 1
+def unit_tests(args):
+    subprocess.call('python ../tests/test_cards.py')
+    subprocess.call('python ../tests/test_solver.py')
 
 
 def main():
@@ -51,4 +51,4 @@ def main():
 
 if __name__ == '__main__':
     logging.info('Running Main')
-    main()
+    print(main())
