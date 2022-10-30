@@ -8,3 +8,5 @@ http_archive(
     strip_prefix = "rules_python-{}".format(rules_python_version),
     url = "https://github.com/bazelbuild/rules_python/archive/{}.zip".format(rules_python_version),
 )
+
+register_toolchains(":python3_toolchain")

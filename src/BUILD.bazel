@@ -3,6 +3,8 @@ py_binary(
     name = "deck_problem",
     main = "main.py",
     srcs = ["bin/main.py"],
+    python_version = "PY3",
+    srcs_version = "PY3",
     deps = [
         ":cards",
         ":solver",
@@ -41,3 +43,4 @@ py_library(
     ],
 )
 
+package(default_visibility = ["//visibility:public"])
