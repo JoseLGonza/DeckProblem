@@ -29,7 +29,7 @@ Please provide clear instructions on how to run program and unit tests.
 #### **Usage:**
 
 ##### Requirements:
-- deck_problem.zip (Included in the repository)
+- deck_problem.zip ([Download Link](https://github.com/JoseLGonza/DeckProblem/raw/main-problem-functionality/deck_problem.zip))
 - Python 3
 - A Terminal
 
@@ -63,7 +63,7 @@ Run a set of test cases:
 
 ---
 
-##### **How to Build:**
+#### **How to Build:**
 
 ##### Requirements:
 - Bazel
