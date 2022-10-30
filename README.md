@@ -35,7 +35,7 @@ Please provide clear instructions on how to run program and unit tests.
 
 
 
-After downloading the deck_problem.zip you simply have to run it on your terminal with one of the three available commands:
+After downloading the deck_problem.zip you simply have to run it with python on your terminal with one of the three available commands:
 - `solve -s (-v)`
 - `unit-tests`
 - `test-cases`
