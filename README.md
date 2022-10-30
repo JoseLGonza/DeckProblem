@@ -28,10 +28,19 @@ Please provide clear instructions on how to run program and unit tests.
 
 #### **Usage:**
 
+##### Downloads:
+
+MacOS / Linux: 
+- deck_problem.zip ([Download Link](https://github.com/JoseLGonza/DeckProblem/raw/master/deck_problem.zip))
+
+Windows:
+- deck_problem_win.zip ([Download Link](https://github.com/JoseLGonza/DeckProblem/raw/master/deck_problem_win.zip))
+
+
 ##### Requirements:
-- deck_problem.zip ([Download Link](https://github.com/JoseLGonza/DeckProblem/raw/main-problem-functionality/deck_problem.zip))
+- deck_problem.zip
 - Python 3
-- A Terminal
+- Terminal
 
 
 
