@@ -2,7 +2,7 @@
 
 #### **Problem Statement:**
 
-**Part 1:**
+###### **Part 1:**
 
 You are given a deck containing N cards. While holding the deck:
 
@@ -18,7 +18,62 @@ The program should take the number of cards in the deck as a command line argume
 Please ensure the program compiles and runs correctly (no pseudo-code). You can use any programming language of your choice (eg. C, Java, Python etc.).
 
 
-**Part 2:**
+###### **Part 2:**
 
 Once the program for the above has been written please write a program that runs unit test cases to validate the program. Please write unit tests for all the various test case scenarios for this.
 Please provide clear instructions on how to run program and unit tests.
+
+
+---
+
+#### **Usage:**
+
+##### Requirements:
+- deck_problem.zip (Included in the repository)
+- Python 3
+- A Terminal
+
+
+
+After downloading the deck_problem.zip you simply have to run it on your terminal with one of the three available commands:
+- `solve -s (-v)`
+- `unit-tests`
+- `test-cases`
+
+`-s / --size` is a mandatory argument and represents the deck size when solving the problem.
+
+##### Examples:
+
+Solve problem with a 10 card deck size:
+
+`python deck_problem.zip solve -s 10`
+
+Solve problem with a 4 card deck size, and output problem progress:
+
+`python deck_problem.zip solve -s 4 -v`
+
+Run unit tests:
+
+`python deck_problem.zip unit-tests`
+
+Run a set of test cases:
+
+`python deck_problem.zip test-cases`
+
+
+---
+
+##### **How to Build:**
+
+##### Requirements:
+- Bazel
+
+
+##### Build:
+Using [Bazel](https://github.com/bazelbuild/bazel) as the build tool for this small project.
+
+To create a new python zip after making changes to the project, you need to run the following command:
+
+`bazel build //src/... --build_python_zip`
+
+This will generate a new `deck_problem.zip` under `DeckProblem/bazel-bin/src/`.
