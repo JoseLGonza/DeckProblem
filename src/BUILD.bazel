@@ -1,0 +1,43 @@
+
+py_binary(
+    name = "deck_problem",
+    main = "main.py",
+    srcs = ["bin/main.py"],
+    deps = [
+        ":cards",
+        ":solver",
+        ":test_cards",
+        ":test_solver"
+    ],
+)
+
+py_library(
+  name = "cards",
+  srcs = ["cards.py"]
+)
+
+py_library(
+  name = "solver",
+  srcs = ["solver.py"],
+  deps = [
+        ":cards"
+    ]
+)
+
+py_library(
+    name = "test_cards",
+    srcs = ["tests/test_cards.py"],
+    deps = [
+        ":cards"
+    ],
+)
+
+py_library(
+    name = "test_solver",
+    srcs = ["tests/test_solver.py"],
+    deps = [
+        ":cards",
+        ":solver"
+    ],
+)
+
